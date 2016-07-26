@@ -1,0 +1,867 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{natbib}
+\usepackage{cite}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epsfig}
+\usepackage{graphics}
+\usepackage{graphicx}
+
+% Definitions
+\DeclareMathOperator\erf {erf}
+\newcommand{\heavi}{\Theta}
+
+%opening
+\title{Development of a Radiating Model for the Influence on Tropospheric Response of the Characteristics of Heat Forcing }
+
+\author{O.J. Halliday, S. D. Griffiths, D. J. Parker}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+It has been known for some time that convective heating is communicated to its environment by gravity waves. Despite this, the radiation of gravity waves in macro-scale models, which are typically forced at the grid-scale by mesoscale parameterization schemes, is not well understood. In order to begin to address this problem, we present here theoretical work directed toward improving our understanding of convectively forced gravity wave effects at the mesoscale. Commencing with hydrostatic, non-rotating, 2D, incompressible equations, we find a radiating, analytical solution to prescribed sensible heat forcing in a stratified atmosphere with a base state of density which varies with altitude, for both the vertical velocity and potential temperature response . Both Steady and pulsed heating with adjustable horizontal structure is considered. From these solutions we construct a simple model capable of interrogating the spatial and temporal sensitivity of the atmosphere to chosen heating functions of the remote forced response in particular. Further, we find that the macro-scale response to convection is highly dependent on the radiation characteristics of gravity waves, which are in turn dependent upon the temporal and spatial structure of the source, and upper boundary condition of the domain.
+\end{abstract}
+%
+%
+%
+\section{Introduction}
+\label{sec_Intro}
+%
+It is observed that tropical deep convection is highly organised on the synoptic and mesoscale \citep{wheeler1999convectively}, and widely accepted that gravity waves provide a mechanism for the aggregation of cumulonimbus storms \citep{tulich2011convectively}. Indeed, the ``gregarious" nature of mesoscale tropical convection cells is largely driven by gravity waves \citep{mapes1993gregarious} which communicate the necessary atmospheric adjustment to convection into the neighbouring troposphere, through subsidence or lifting. Bretherton and Smolarkiewicz (\citeyear{bretherton1989gravity}) showed that remote momentum and temperature changes, communicated through the propagation of convectively generated gravity waves may condition the troposphere for further convection triggering or suppression. 
+
+Further, latent heat released during cumulonimbus storms, in turn, forces mesoscale gravity waves (reference). Since convection is a process which occurs on the sub-GCM grid scale, a theoretical understanding of this coupling, upon which a convection parameterisation scheme can be built, is essential. However a number of idealised studies (\citep{lindzen1974wave}, \citep{raymond1983wave}, \citep{emanuel1986air}) relating to the interaction of tropospheric gravity waves and deep convection invite further work, either on their models, their deployment or their application to different tropospheric processes. The fact that parameterisation schemes remain far from perfect in capturing the spatial and temporal distribution of cumulonimbus is a clear indicator that current theories are deficient.
+
+Here, based on an analytic solution to an atmosphere which is thermally forced via a prescribed heating function, we build a model capable addressing a number of questions:
+\begin{enumerate}
+ \item What is the effect of the upper boundary condition on the spatial and temporal distribution of convective adjustment?
+ \item What is the influence of spatial and temporal structure of thermal forcing on gravity wave characteristics? Namely, do changes in the thermal forcing function, on a scale unresolved by a GCM, lead to significant differences on the mesoscale?
+ \item Are forced gravity waves in the troposphere affected by explicit representation of the stratosphere?
+\end{enumerate}
+
+A radiative boundary condition on kinetic energy at the tropopause is clearly physically important but mathematically disruptive - such a condition does not lend itself to a direct analytical treatment of forced-
+convection. Nicholls (ref), constructs a restricted, idealised analytical model using a Dirichlet rigid lid condition which is subsequently raised aloft to address the influence of vertical gravity waves in adjusting the 
+neighbouring cloud-free troposphere. The importance of mode 1 and 2 gravity waves is apparent. Using a two-dimensional cloud resolving model, Lane and Reeder (\citeyear{lane2001convectively}) later 
+showed that the mode 3 gravity wave (see the classification of the general analysis we shall present below) at least plays a significant role in modifying convective inhibition in the neighbourhood of deep 
+convection. Similarly, Shutts and Gray (\citeyear{shutts1994numerical}) examine the role of gravity waves in adjusting the environment of isolated clouds in highly rotating frames. Note, though, the latter authors 
+ignore sensitivity of their model to lid height and use a numerical model.
+
+In this article extend the analytical work of Nicholls to address the above questions, assessing the mesoscale effect of horizontal and vertical variation in the pattern of convective forcing, with special attention 
+paid to the sensitivity of the remote horizontal response, as well as atmospheric stratification. Specifically, we will develop and apply a suitable analytical model which accommodates variation in both the spatial 
+and temporal patterning of sensible heating with conserved total heating flux (so the macro-scale parameterisation is effectively fixed, note) in atmospheres of constant or varying buoyancy frequency. To 
+facilitate an analytical study, we will base our model on idealised, linear equations for a deep atmosphere and generalise a technique due to Nichols  (\citeyear{nicholls1991thermally}) in which the upper lid of 
+the domain is many times higher than the tropopause, so that the solution can be considered pseudo-radiating. The choice of lid altitude will be finding that regime in which the lid has limited influence the 
+tropospheric response, i.e. the group speed of induced gravity waves does not permit them to reflect off the lid and re-enter our spatial-temporal domain. 
+Accordingly, solutions will be discussed in terms of linear gravity wave modes.   
+
+This article is organised as follows. Section 2 develops an analytical model for sensible heat-forced response in the troposphere, relying on a rigid-lid Dirichlet boundary condition, then considers its convergence 
+onto a radiating solution as its lid is raised aloft. Section 3 will compare results from three model regimes: i) trapped solutions, ii) radiating solutions with constant N, buoyancy frequency and iii) radiating 
+solutions with non-constant N. We proceed to present our key data and analysis, which relates to the influence of the characteristics of the heat forcing and atmospheric structure. Finally, section 4 will present 
+conclusions.
+
+In this article, we characterise sensible heating by a horizontal length scale $\sigma$, a duration $T$ and the modal structure of its vertical variation, which is comprised of gravest tropospheric mode with and without low-level cooling. Forced atmospheric 
+responses will be computed largely within the constraint of conserved total heat input and are compared (mainly through the inspection and quantification of difference plots) and interpreted in the context of gravity wave theory and the spatial-temporal scales of 
+numerical weather prediction modes. The effect of Coriolis force is reserved for a subsequent paper. 
+%
+%
+%
+\section{Mathematical Model}
+\label{sec_Model}
+%
+From linear governing equations we derive and solve an equation for field variable $w$, 
+using a modal expansion, for a sensible heat forcing with defined spatial and temporal variation.
+We then obtain the corresponding potential temperature response, $b$. 
+Our solution radiates energy at the tropopause and assumes a compressible atmosphere.
+
+Consider small disturbances about a state of rest in an incompressible fluid in two dimensions, $(x, z)$,
+within a hydrostatic approximation:
+%
+\begin{eqnarray}
+\label{equ_Boussinesq}
+\frac{\partial u}{\partial t}  = - \frac{1}{\rho_0} \frac{\partial p}{\partial x}, \quad
+\frac{g \rho}{\rho_0}  =  - \frac{1}{\rho_0}  \frac{\partial p}{\partial z}, \quad
+\frac{\partial \rho}{\partial t} +  w \frac{d \rho_0}{dz}  =  -Q, \quad
+\frac{\partial u}{\partial x} + \frac{\partial w}{\partial z}  =  0, 
+\end{eqnarray}
+%
+where $(u, w)$ is the perturbation wind vector, $\rho$ the density, $p$ the pressure and $Q$ the thermal forcing.
+$w$ is subject to the boundary conditions:
+%
+\begin{eqnarray}
+\label{bcs}
+w(z = 0, H) = 0. 
+\end{eqnarray}
+
+Note that the thermodynamic equation from \ref{equ_Boussinesq} may also be written in terms of 
+a buoyancy perturbation as follows (PB):
+%
+\begin{eqnarray}
+\label{equ_b}
+\frac{\partial b }{\partial t} + N(z)^2 w = S, \quad S = - \frac{g }{ \rho_0 } Q,
+\end{eqnarray}
+%
+where $b = \frac{g \theta'}{\theta_0}$ is a buoyancy perturbation, $\theta'$ a potential temperature perturbation, 
+$\theta_0$ a reference potential temperature and $N(z)^2 =-\frac{g}{\rho_0}\frac{d \bar{\rho_0}}{dz}$ is the buoyancy frequency 
+(see below).
+
+Eliminating variables in \ref{equ_Boussinesq} the relationship between  $w$ and $S$ may be obtained:
+%
+\begin{equation}
+\label{equ_vertical_structure}
+\frac{1}{\rho_0} \frac{\partial}{\partial z} \left( \rho_0(z)  \frac{\partial}{\partial z} \frac{\partial^2 w}{\partial t^2} \right)  +N(z)^2 \frac{\partial^2 w}{\partial x^2} = \frac{\partial^2 S}{\partial x^2}.
+\end{equation}
+%
+To solve equation \ref{equ_vertical_structure} for a given heating function $S(x,z,t)$ let us first address the vertical variation of the $w$ response. 
+We shall use a modal expansion of fields $w$ and $S$ between rigid lower and upper boundaries located at
+ $z=0,H$, with the troposphere (which later will be taken to coincide with the top of heating) corresponding to the restricted range of altitudes:
+%
+\begin{equation}
+0 \leq z \leq H_t, \quad H_t \ll H.
+\end{equation}
+% 
+Similar to equation \ref{equ_vertical_structure} is the following eigenvalue equation for the free modes (i.e. modes 
+characterisitc of an unheated atmosphere):
+%
+\begin{equation}
+\label{equ_free_modes}
+\frac{d}{dz} \left( \rho_0(z) \frac{d \phi_n}{dz} \right) + \frac{N(z)^2 \rho_0(z)}{c_n^2} \phi_n(z) = 0,
+\end{equation}
+%
+with associated boundary conditions:
+%
+\begin{equation}
+\phi_n(0) = \phi_n(H) = 0.
+\end{equation}
+%
+Solutions, when used with an appropriate metric, have the orthomormaility property:
+%
+\begin{equation}
+\int_0^H N(z)^2 \rho_0(z)\phi_n(z) \phi_m(z) dz = \delta_{nm}
+\end{equation}
+%
+provided a normalisation constant is appropriately chosen. 
+
+We shall shortly project the vertical structure of the $w$ response onto the discrete $\phi_n$ introduced above using
+expansions for $S$ and $w$:
+%
+\begin{equation}
+\label{equ_modal}
+w = \sum_i w_i(x,t) \phi_i(z), \quad S = N(z)^2 \sum_i s_i(x,t) \phi_i(z). \quad
+\end{equation}
+%
+In order to write compact equation we will henceforth suppress the $z$ label on the buoyancy frequency, $N(z)$, and the base state of density $\rho_0(z)$.
+
+To avoid differentiating these series, equation \ref{equ_vertical_structure} must first be transformed. 
+Multiply by $\phi_m(z)$ and integrate on $z$ in the range $0\leq z\leq H$ to obtain:
+%
+\begin{equation}
+- \int_0^H  \rho_0 \frac{\partial \phi_m}{\partial z}  \frac{\partial}{\partial z} \frac{\partial^2 w}{\partial t^2}  dz  + \int_0^H \phi_m  N^2 \rho_0 \frac{\partial^2 w}{\partial x^2} dz  = \int_0^H  \phi_m \rho_0 \frac{\partial^2 S}{\partial x^2} dz.
+\end{equation}
+%
+Here, integration by parts and the assumed boundary conditions on the $\phi_n$ have been on the first term on the left hand side. A second application of parts with
+$U= \rho_0 \frac{\partial \phi_m}{\partial z} $ and $\frac{dV}{dz} = \frac{\partial}{\partial z} \frac{\partial^2 w}{\partial t^2} $ and the use of equation \ref{equ_free_modes} 
+now yields an equation into which the modal expansions may be substituted:
+%
+\begin{equation}
+- \frac{1}{c_n^2} \int_0^H  N^2 \rho_0 \phi_m \frac{\partial^2 w}{\partial t^2}  dz  +   \int_0^H N^2 \phi_m \rho_0 \frac{\partial^2 w}{\partial x^2} dz  = \int_0^H  \phi_m \rho_0 \frac{\partial^2 S}{\partial x^2} dz.
+\end{equation}
+%
+Substituting the expansions in equation \ref{equ_modal} and using their orthonormaility property we easily obtain an equation for the $w_m$ and $S_m$:
+%
+\begin{equation}
+\label{equ_vertical_structure_2}
+-  \frac{\partial^2 }{\partial t^2} w_m(x,t)  + c_m^2   \frac{\partial^2 }{\partial x^2} w_m(x,t)   =  c_m^2 \frac{\partial^2 }{\partial x^2} s_m(x,t).
+\end{equation}
+%
+
+It is now necessary to define the vertical variation of the thermal forcing. 
+We choose a pulsed or transient thermal forcing of finite duration, $T$, of separable form and restricted to the troposphere:
+%
+\begin{eqnarray}
+\label{equ_heating_defn}
+S_{(n-1)}(x,z,t) & = & Q F(x) \left( \heavi(t) - \heavi(t-T) \right) \\ \nonumber
+           & \times & \sin \left( \frac{n \pi}{H_t} z \right)  (\heavi(z) - \heavi(z-H_t)), \quad \quad n \in \mathbb{Z}^+, \quad T>0.
+\end{eqnarray}
+%
+Here $\heavi(t)$ is the Heavyside function, $Q$ a calibration constant to be used later, 
+$n$ is the number of half sinusoids of vertical variation within the troposphere $0\leq z \leq H_t$,
+with $(n-1)$ tropospheric nodes. Note, the tropopause now coincides with the top of heating i.e. $S_{(n-1)} =0$, $z>H_t$.
+Note also that the height of the tropopause is taken to be identical with the assumed scale height of the troposphere.
+Figure \ref{heating diagram} below is a schematic representation of the horizontal and vertical variation of the thermal forcing function 
+we use throughout, plotted for $n=1$, corresponding to the gravest mode of heating across the tropopause. 
+In this figure symbol $S_z (z) =  \sin \left( \frac{n \pi}{H_t} z \right) \left( \heavi(z) - \heavi(z-H_t) \right)$.
+%
+% 0
+%
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{heating_sketch-eps-converted-to.pdf}
+    \caption{ Not to scale. Diagram of the horizontal and vertical heating variation of our
+	      chosen sensible heating function. 
+              The left (right) panel shows the vertical (horizontal) variation. 
+              The horizontal variation is defined in equation \ref{equ_horizontal_heating}
+              Note that, for the vertical variation, the distance, $z$, (altitude) co-ordinate is vertical. 
+              The vertical variation depicted corresponds to the gravest mode of heating 
+              $n=1$ in the troposphere, between the ground and the tropopause (broken red line). 
+              In the right panel, the standard deviation of the normal distribution is $\sigma$ }
+  \label{heating diagram}
+\end{figure}
+%
+
+Projecting the truncated or confined heating defined in equation \ref{equ_heating_defn} 
+over a subset of the orthonormal eigenfunctions $S_{(n-1)} (x,z,t) = N^2 \sum_{i} s_i (x,t) \phi_i (z)$ we find:
+%
+\begin{equation}
+\label{equ_s_m}
+s_m (x,t) = \int_0^H N^2 \rho_0(z) \phi_m (z) S_{(n-1)} (x,z,t) dz.
+\end{equation}
+%
+Let $n=1$, corresponding physically to the gravest mode of heating with zero nodes within the troposphere.
+$n=2$ corresponds to the next mode of heating identified by Nicholls (**) as important, which will be considered when we
+turn briefly to low-level cooling. To project the heating profile in this way it is clearly necessary to define a vertical variation of buoyancy frequency:
+%
+\begin{equation}
+N(z) = 
+  \begin{cases} 
+     N_1, & z\leq H_t, \\
+     N_2, & H>z>H_t x,
+   \end{cases}
+\end{equation}
+%
+and the base state of density $\rho_0(z)$:
+%
+\begin{equation}
+\rho_0(z) = 
+  \begin{cases} 
+    \rho_{s1} \exp \left( - \frac{z}{H_{s1}} \right), & z\leq H_t, \\
+    \rho_{s2} \exp \left( - \frac{z}{H_{s2}}\right) , & H>z>H_t x.
+   \end{cases}
+\end{equation}
+%
+For definiteness let $N_2 > N_1$. Above, the atmospheric scale heights for the troposphere and stratosphere are given by:
+%
+\begin{equation}
+H_{s1} = \frac{g}{N_1^2}, \quad H_{s2} = \frac{g}{N_2^2},
+\end{equation}
+%
+and the constants $\rho_{s1}$, $\rho_{s2}$ ensure continuity of the base state density at the tropopause:
+%
+\begin{equation}
+\rho_{s2} = \rho_{s1} \exp \left( \left( \frac{1}{H_{s2}}  -  \frac{1}{H_{s1}} \right) H_t \right).
+\end{equation}
+%
+
+Let us seek to obtain the free modes, $\phi_n(z)$, and corresponding wave-speeds, $c_n$. The latter are obtained by solving
+the two ordinary differential equations derived from \ref{equ_free_modes}: 
+%
+\begin{equation}
+\frac{d^2 \phi_n^{(1)}}{dz^2} -\frac{1}{H_{s1}} \frac{d \phi_n^{(1)}}{dz} + \frac{N_1^2}{c_n^2} \phi_n^{(1)} = 0, \quad 0< z \leq H_t 
+\end{equation}
+%
+\begin{equation}
+\frac{d^2 \phi_n^{(2)}}{dz^2} -\frac{1}{H_{s2}} \frac{d \phi_n^{(2)}}{dz} + \frac{N_2^2 }{c_n^2} \phi_n^{(2)} = 0, \quad H_t < z < H, 
+\end{equation}
+%
+with matching conditions:
+%
+\begin{equation}
+\label{match1}
+\phi_n^{(1)}(H_t) = \phi_n^{(2)}(H_t), \quad \left[ \frac{d\phi_n^{(1)}}{dz} \right]_{H_t} = \left[ \frac{d\phi_n^{(2)}}{dz} \right]_{H_t}.
+\end{equation}
+%
+and secular equations derived from the above, which may be solved for the $c_n$, considered shortly.
+
+Only solutions which satisfy appropriate boundary conditions and admit real values of $c_n$ are considered here. Such solutions are:
+%
+\begin{equation}
+\label{case1}
+\phi_n^{(1)}(z) = 
+  \begin{cases} 
+     A_n \sin   \left( \left( \sqrt{ \frac{N_1^2}{c_n^2}  - \frac{1}{2 H_{s1}^2} }   \right)  z \right) e^{\frac{z}{2 H_{s1}} } ,  & c_n < 2 N_1 H_{s1} \\
+     A_n \sinh \left( \left( \sqrt{ \frac{1}{2 H_{s1}^2} - \frac{N_1^2}{c_n^2}}\right)  z \right) e^{\frac{z}{2H_{s1}} } ,  & c_n > 2 N_1 H_{s1},
+   \end{cases}
+\end{equation}
+%
+\begin{equation}
+\label{case3}
+\phi_n^{(2)}(z) = 
+  \begin{cases} 
+    A_n' \sin   \left( \left( \sqrt{ \frac{N_2^2}{c_n^2} - \frac{1}{2 H_{s2}^2} }     \right) ( z -H ) \right) e^{\frac{z}{2H_{s2}} } ,  & c_n < 2 N_2 H_{s2} \\
+    A_n ' \sinh \left( \left( \sqrt{ \frac{1}{2 H_{s2}^2}      - \frac{N_2^2}{c_n^2}} \right) ( z -H ) \right) e^{\frac{z}{2H_{s2}} } ,  & c_n > 2 N_2 H_{s2},
+   \end{cases}
+\end{equation}
+%
+with the $c_n$ determined from the condition that non-trivial solutions for $A_n$ and $A_n '$ arise. 
+Before proceeding to consider this condition we note that $N_2 H_{s2} < N_1 H_{s1}$. 
+To obtain the matching conditions which will provide equations for the $c_n$, equations \ref{case1} and \ref{case3} are substituted into \ref{match1}
+and the condition that the $A_n$ and $A_n'$ have non-trivial solutions is sought. Three cases arise as follows:
+%
+\begin{eqnarray}
+\label{case1_se}
+\frac{k_n }{ k_n ' } & + & \left( \frac{1}{H_{s1}} - \frac{1}{H_{s2}} \right) \frac{\tan (k_n D) }{ k_n ' } + \\  \nonumber
+                            &  - & \tan \left( k_n H_t \right) \cot \left( k_n ' (H_t - H )\right) = 0, \quad  c_n < 2 N_2 H_{s2},
+\end{eqnarray}
+%
+\begin{eqnarray}
+\label{case2_se}
+\frac{k_n }{ k_n ' }  & + & \left( \frac{1}{H_{s1}} - \frac{1}{H_{s2}} \right) \frac{\tan (k_n D) }{ k_n ' } + \\  \nonumber
+                             &  - & \tan \left( k_n H_t \right) \coth \left( k_n ' (H_t - H )\right) = 0, \quad 2 N_2 H_{s2} < c_n  < 2 N_1 H_{s1} ,
+\end{eqnarray}
+%
+\begin{eqnarray}
+\label{case3_se}
+\frac{k_n }{ k_n ' }  & + & \left( \frac{1}{H_{s1}} - \frac{1}{H_{s2}} \right) \frac{\tanh (k_n D) }{ k_n ' } + \\  \nonumber
+                             &  - & \tanh \left( k_n H_t \right) \coth \left( k_n ' (H_t - H )\right) = 0, \quad  c_n >  2 N_1 H_{s1} ,
+\end{eqnarray}
+%
+where we have defined:
+%
+\begin{equation}
+k_n =  \sqrt{ \left| \frac{N_1^2}{c_n^2} - \frac{1}{ 4 H_s^2} \right| } , \quad k_n ' = \sqrt{ \left| \frac{N_2^2}{c_n^2} - \frac{1}{4 H_s^2} \right| }.
+\end{equation}
+%
+Note that solutions $\phi_n(z)$ for $c_n = 2 N_1 H_{s1}, 2 N_2 H_{s2}$ exist only for certain discrete $H$ and are neglected.
+Equations \ref{case1_se}..\ref{case3_se} are otherwise solved numerically.
+
+
+The normalization coefficients $A_n$ are are given by different expressions over the range of $c_n$ as follows. 
+
+For $c_n<2N_2H_{s2}$ we have:
+%
+\begin{eqnarray}
+\label{case1_An}
+\frac{1}{A_n^2}    & = &  \frac{N_1^2 \rho_{s1}}{2} \left( H_t - \frac{\sin(2 k_n H_t)}{ 2 k_n }  \right) \\ \nonumber
+                            & + & \frac{N_2^2 \rho_{s2} }{2} \left(  \frac{ \sin^2(k_n H_t)}{ \sin^2( k_n ' (H_h - H) )} \right) \exp \left(  \left( \frac{1}{H_{s1} } - \frac{1}{H_{s2}} \right) H_t \right) \\ \nonumber
+                            & \times & \left( H - H_t + \frac{\sin( 2 k_n ' (H_t - H))}{ 2 k_n ' } \right), \\ \nonumber
+A_n '                    & = & \left( \frac{ \sin(k_n H_t)}{ \sin( k_n ' (H_h - H) )} \right) \exp \left(  \left( \frac{1}{2H_{s1} } - \frac{1}{2 H_{s2}} \right) H_t \right) A_n, \\ \nonumber
+\end{eqnarray}
+%
+for $2 N_2 H_{s2} < c_n  < 2 N_1 H_{s1}$ we have:
+%
+\begin{eqnarray}
+\label{case2_An}
+\frac{1}{A_n^2}    & = & \frac{N_1^2 \rho_{s1} }{2}\left( H_t - \frac{\sin( 2 k_n H_t ) }{ 2 k_n }  \right) \\ \nonumber
+                            & + & \frac{N_2^2 \rho_{s2} }{2} \left(  \frac{ \sin^2(k_n H_t)}{\sinh^2( k_n ' (H_h - H) )} \right)  \exp \left( \left( \frac{1}{H_{s1}} - \frac{1}{H_{s2}} \right) H_t \right) \\ \nonumber
+                            & \times & \left( (H_t - H) - \frac{\sinh (2k_n ' (H_t - H))}{ 2 k_n ' } \right), \\ \nonumber
+A_n '                    & =  &\left( \frac{ \sin (k_n H_t)}{ \sinh( k_n ' (H_t - H) )} \right) \exp \left( \left( \frac{1}{2 H_{s1}} - \frac{1}{2 H_{s2}} \right) H_t \right) A_n.
+\end{eqnarray}
+%
+and for $2 N_1 H_{s1} < c_n$ we have:
+%
+\begin{eqnarray}
+\label{case3_An}
+\frac{1}{A_n^2}    & = & \frac{N_1^2 \rho_{s1} }{2}\left( - H_t + \frac{\sinh( 2 k_n H_t ) }{ 2 k_n }  \right) \\ \nonumber
+                            & + & \frac{N_2^2 \rho_{s2} }{2} \left(  \frac{ \sinh^2(k_n H_t)}{\sinh^2( k_n ' (H_h - H) )} \right)  \exp \left( \left( \frac{1}{H_{s1}} - \frac{1}{H_{s2}} \right) H_t \right) \\ \nonumber
+                            & \times & \left( (H_t - H) - \frac{\sinh (2 k_n ' (H_t - H))}{ 2 k_n ' } \right), \\ \nonumber
+A_n '                    & =  &\left( \frac{ \sinh (k_n H_t)}{ \sinh( k_n ' (H_t - H) )} \right) \exp \left( \left( \frac{1}{2 H_{s1}} - \frac{1}{2 H_{s2}} \right) H_t \right) A_n.
+\end{eqnarray}
+%
+
+Finally therefore, we may obtain the modal projection of our chosen heating from \ref{equ_heating_defn} and \ref{equ_s_m}:
+%
+\begin{equation}
+ s_n (x,t) = Q F(x) \left( \heavi(t) - \heavi(t-T) \right) \int_0^{H_t} \rho_0(z) \phi_n(z) \sin \left( \frac{n \pi}{H_t} z \right) dz,
+\end{equation}
+%
+where the factor $ (\heavi(z) - \heavi(z-H_t))$ has be absorbed in the upper limit on the integration. 
+
+For $c_n<2N_2H_{s2}$ we have:
+%
+\begin{eqnarray}
+\label{equ_coeff_defn1}
+ s_n (x,t) & = &  Q F(x) \left(\heavi(t) - \heavi(t-T) \right) \sigma_n, \\ \nonumber
+\sigma_n & = &  \frac{ \rho_s A_n  } {2 } Re \left( \frac{ \left( \exp \left( i k_n H_t - H_t / 2H \right) +1 \right) }{ \left( i k_n + i \frac{\pi }{H_t} - \frac{1}{2 H_s} \right) } \right) \\ \nonumber
+                 & - & \frac{ \rho_s A_n  } {2 } Re \left( \frac{ \left( \exp \left( i k_n H_t - H_t / 2H \right) +1 \right) }{ \left( i k_n - i \frac{\pi }{H_t} - \frac{1}{2 H_s} \right) } \right). \\ \nonumber
+\end{eqnarray}
+%
+with the $A_n$ determined from equation \ref{case1_An} and the possible wave-speeds from a numerical solution of secular equation \ref{case1_se}.
+For $2 N_2 H_{s2} < c_n  < 2 N_1 H_{s1}$ equation \ref{equ_coeff_defn1} may again be used but now with 
+$A_n$ determined from equation \ref{case2_An} and all possible wave-speeds in this range of $c_n$ from a numerical solution of secular equation \ref{case2_se}.
+For  for $2 N_1 H_{s1} < c_n$, the expression for the $s_n$ becomes:
+%
+\begin{eqnarray}
+\label{equ_coeff_defn2}
+s_n (x,t) & = &  Q F(x) \left(\heavi(t) - \heavi(t-T) \right) \sigma_n', \\ \nonumber
+\sigma_n' & = &  \frac{ \rho_s B_n  } {2i} Im \left( \frac{ \left( \exp \left( k_n H_t - H_t / 2H_s \right) +1 \right) }{ \left( k_n - i \frac{\pi }{H_t} - \frac{1}{2 H_s} \right) } \right) \\ \nonumber
+                 & + &  \frac{ \rho_s B_n  } {2i} Im \left( \frac{ \left( \exp \left( - k_n H_t - H_t / 2H_s \right) +1 \right) }{ \left(- k_n + i \frac{\pi }{H_t} - \frac{1}{2 H_s} \right) } \right), \\ \nonumber
+\end{eqnarray}
+%
+where now the $A_n$ must be determined from equation \ref{case3_An} and the wave-speeds from a numerical solution of secular equation \ref{case3_se}.
+%
+%
+%
+\subsection{$w$-Response}
+%
+We derive the vertical velocity of the response induced by the form of thermal forcing specified in equations \ref{equ_heating_defn}
+and \ref{equ_coeff_defn2} by projecting it over the free modes $\phi_n(z)$ considered in the last section. 
+
+On making a Fourier transform on horizontal variable $x$, followed by a Laplace transform 
+on variable $t$ to equation \ref{equ_vertical_structure_2} and using standard properties of the Fourier and Laplace transforms 
+ (\citep{arfken2013mathematical}) we obtain:
+%
+\begin{eqnarray}
+\tilde{w}_m(k,p) & = & \frac{Q c_n^2 k^2 \tilde{F}(k) \sigma_m }{ N^2 p \left( p + i c_m \right) \left( p-i c_m \right)  } \\ \nonumber
+                        & + &  \frac{Q c_m^2 k^2 \tilde{F}(k)  \sigma_m e^{-pT} }{ N^2 p \left( p + i c_m \right) \left( p-i c_m \right)  }. \\ \nonumber
+\end{eqnarray}
+%
+Here $ \tilde{F}$ denotes the transform of the horizontal variation, $F(x)$. 
+The first term of the right hand side is similar to Parker and Burton's equation (10) note.
+Using the delay theorem of Laplace transforms on the appropriate partial fraction expansion (\citep{arfken2013mathematical})
+the above may be inverse Laplace transformed. A subsequent Fourier inversion of horizontal wavenumber, $k$, yields
+the flow response to one vertical mode of heating, $\phi_m(z)$ with projection $\sigma_m$:
+%
+\begin{eqnarray}
+\label{equ_PB2}
+w_m(x,t) & = & \frac{Q}{N^2} \left( 1 - \heavi( t-T) \right) F(x) \sigma_m \\ \nonumber
+              & - & \frac{Q}{2N^2} \left(  F(x + c_m t) + F(x - c_m t) \right) \sigma_m\\ \nonumber
+              & + & \frac{Q}{2 N^2} \heavi( t-T) \left( F(x-c_m (t-T)) \right) \sigma_m \\ \nonumber
+              & + & \frac{Q}{2 N^2} \heavi( t-T) \left( F(x+ c_m (t-T))  \right) \sigma_m. \\ \nonumber
+\end{eqnarray}
+% 
+A few remarks are now appropriate. The above mode of response holds for any horizontal variation of sensible heating, it 
+contains a horizontal phase speed determined by the vertical wavenumber $c_n$ and a response to steady heating may 
+easily be obtained on setting $T \rightarrow \infty$, when terms with factor $\heavi(t-T)$ disappear. 
+
+Since equation \ref{equ_vertical_structure} for $w$ is linear, the response forced by the heating defined in equations \ref{equ_heating_defn} and \ref{equ_coeff_defn2}
+may finally be written as a projection over the $\phi_i(z)$, weighted by the appropriate coefficient $w_m (x,t)$ given in 
+equation \ref{equ_PB2} above:
+%
+\begin{eqnarray}
+\label{equ_w_response}
+\frac{w}{Q} & = & \frac{1}{N^2}    \left(\heavi( t-T)  - \heavi( t-T) \right) F(x)                  \sum_m \sigma_m \phi_m(z) \\ \nonumber
+                  & - & \frac{1}{2N^2}    \heavi( t)                  \sum_m  \sigma_m  \left(  F(x + c_m t) + F(x - c_m t) \right)  \phi_m(z) \\ \nonumber
+                  & + & \frac{1}{2 N^2} \heavi( t-T)  \sum_m \sigma_m  \left( F(x-c_m (t-T)) \right)  \phi_m(z) \\ \nonumber
+                  & + & \frac{1}{2 N^2}  \heavi( t-T) \sum_m  \sigma_m \left( F(x+ c_m (t-T))  \right)  \phi_m(z), \\ \nonumber
+\end{eqnarray}
+%
+where of course the wavespeeds, $c_m$, are as discussed in the previous section.
+
+Before considering the associated potential temperature response, we remark that it is possible to 
+write the initial heating profile for case of vertical variation currently under consideration ($n=1$) conveniently as follows: 
+%
+\begin{equation}
+\label{equ_3}
+S_{0}(x,z,t) = (\heavi( t-T)  - \heavi(t-T) ) S_0(x,z,0),
+ \end{equation}
+%
+where:
+%
+\begin{equation}
+ S_0 (x,z,0) = Q F(x) \sum_{i=1} \sigma_i \phi_i (z).
+\end{equation}
+%
+We define a horizontal variation of heating as follows:
+%
+\begin{equation}
+\label{equ_horizontal_heating}
+F(x) = \frac{1}{\sigma^\eta}\exp \left( -\frac{x^2}{2 \sigma^2} \right), \quad \eta =0,1.
+\end{equation}
+%
+Here $\sigma$ is the width parameter for the horizontal variation of heating. Factor $\frac{1}{\sigma}$ 
+ensures that total heating rate remains constant as $\sigma$ varies. We set switch parameter $\eta=0$ until further notice. 
+%
+%
+%
+\subsection{$b$-Response}
+%
+We derive the potential temperature response induced by the form of thermal forcing specified in equations \ref{equ_heating_defn} and \ref{equ_coeff_defn2}.
+It is convenient to use energy equation \ref{equ_b}, expressed in the form $\frac{\partial  }{\partial t} \left( \frac{b}{Q}\right) = \frac{S}{Q} -  N^2 \frac{w}{Q} = S$, which
+on substituting equations \ref{equ_w_response} and \ref{equ_3} gives:
+%
+\begin{eqnarray}
+\frac{\partial }{\partial t} \left( \frac{b}{Q} \right)
+                  & = & \frac{1}{2} \heavi( t)     \sum_m  \sigma_m  \left(  F(x + c_m t) + F(x - c_m t) \right)  \phi_m(z) \\ \nonumber
+                  & -  & \frac{1}{2} \heavi( t-T)  \sum_m \sigma_m  \left( F( \xi - c_m t ) + F(\xi + c_m t)\right)  \phi_m(z), \\ \nonumber
+\end{eqnarray}
+%
+where we have defined:
+%
+\begin{equation}
+\xi = x + c_m T, \quad \xi' = x - c_m T.
+\end{equation}
+%
+Using the definition of $F(x)$ from equation \ref{equ_horizontal_heating} and assuming initial condition $b=0$, we find:
+%
+\begin{eqnarray}
+\frac{b}{Q} & = & \frac{1}{2}  \sum_m  \sigma_m  \phi_m(z)  \int_0^t \heavi( t') \exp \left(- \frac{ (x - c_m t')^2 }{2 \sigma^2 }\right) dt'  \\ \nonumber
+                  & + & \frac{1}{2}  \sum_m  \sigma_m  \phi_m(z)  \int_0^t \heavi( t') \exp \left(- \frac{ (x +  c_m t')^2 }{2 \sigma^2 }\right) dt'  \\ \nonumber
+		  & - & \frac{1}{2}  \sum_m  \sigma_m  \phi_m(z)  \int_0^t \heavi( t'-T) \exp \left(- \frac{ (\xi - c_m t')^2 }{2 \sigma^2 }\right) dt'  \\ \nonumber
+		  & - & \frac{1}{2}  \sum_m  \sigma_m  \phi_m(z)  \int_0^t \heavi( t'-T) \exp \left(- \frac{ (\xi' + c_m t')^2 }{2 \sigma^2 }\right) dt',  \\ \nonumber
+\end{eqnarray}
+%
+and using standard properties of integrals and the properties of the error function we find:
+%
+\begin{eqnarray}
+\frac{b}{Q} & = & \frac{\sigma}{2} \sqrt{\frac{\pi}{2}} \heavi( t)    \sum_m  \frac{\sigma_m}{c_m} \phi_m(z)  \left(     \erf \left( \frac{c_mt-x}{\sqrt{2} \sigma}\right) + \erf \left( \frac{c_mt+x}{\sqrt{2} \sigma}\right) \right)  \\ \nonumber            		                   & - & \frac{\sigma}{2} \sqrt{\frac{\pi}{2}}  \heavi( t-T) \sum_m  \frac{\sigma_m}{c_m} \phi_m(z)  \left( - \erf \left( \frac{c_m T - \xi }{\sqrt{2} \sigma}\right) +  \erf \left( \frac{c_mt-\xi}{\sqrt{2} \sigma}\right) \right)  \\  \nonumber                                		   & - & \frac{\sigma}{2} \sqrt{\frac{\pi}{2}}  \heavi( t-T) \sum_m  \frac{\sigma_m}{c_m} \phi_m(z)  \left( - \erf \left( \frac{c_m T + \xi' }{\sqrt{2} \sigma}\right) +  \erf \left( \frac{c_mt+\xi'}{\sqrt{2} \sigma}\right) \right), \\ \nonumber                  
+\end{eqnarray}
+%
+which may be expressed in the compact form:
+%
+\begin{eqnarray}
+\label{equ_b_response}
+\frac{b}{Q} & = & \frac{\sigma}{2} \sqrt{\frac{\pi}{2}} \heavi( t)    \sum_m  \frac{\sigma_m}{c_m} \phi_m(z) G(c_m,\sigma,x,t)     \\ \nonumber
+                   & + & \frac{\sigma}{2} \sqrt{\frac{\pi}{2}}  \heavi( t-T) \sum_m  \frac{\sigma_m}{c_m} \phi_m(z) G(c_m,\sigma,x,t-T). \\ \nonumber                  
+\end{eqnarray}
+%
+where:
+%
+\begin{equation}
+G(c_m,\sigma,x,t) = \erf \left( \frac{c_m t - x}{ \sqrt{2} \sigma } \right) +  \erf \left( \frac{c_m t + x}{ \sqrt{2} \sigma } \right).
+\end{equation}
+%
+%
+%
+\subsection{Effect of the Location Rigid Lid Upper Boundary}
+\label{sec_lid_height}
+%
+By raising the location of the upper boundary aloft, well above the tropopause, we aim to 
+produce a solution which may be regarded as radiating at the tropopause. 
+
+However, increasing lid-height, $H$, corresponds to decreasing ratio $ \frac{H_t}{H}$, so that the 
+vertical variation of the heating becomes more localised in relative terms. 
+Therefore, it is necessary that the partial sums used to approximate equations \ref{equ_w_response} and 
+\ref{equ_b_response} are truncated at a mode number, $M$, which is appropriately increased to
+ensure uniform convergence among different value of $H$. We take:
+%
+\begin{equation}
+M = k H, \quad k = 30.
+\end{equation}
+%
+
+In this section we shall consider the convergence of the $w$-response with $H$.
+Our objective is to select a value for $H$ which is sufficiently large that the $w$ field are insensible to further 
+increase (in $H$). We shall first consider some broad features of the response, then define
+a an appropriate field residual upon which to base convergence measurements.  
+In this section (only) we make the following approximations to the vertical structure of our 
+atmosphere for simplicity:
+%
+\begin{equation}
+N_1 \approx N_2, \quad \rho_0(z) \approx constant.
+\end{equation}
+%
+Hence we take and approximation in which the $\phi_n(z)$ reduce to simple sinusoids with free wave speeds  $c_m = \frac{N H}{ m_z \pi}$ and our projections 
+to a Fourier series expansion with coefficient:
+%
+\begin{equation}
+\sigma_m \rightarrow \frac{2 H_t}{\pi H} (-1)^{(n+1)} \sin \left( \frac{m \pi }{H} z \right) \left( \frac{nH^2}{n^2 H^2 - m^2 H_t^2} \right).
+\end{equation}
+%
+Let us denote the harmonic number of the senior terms of this Fourier series, 
+with largest $|\sigma_{m}|$ by $m_{max}$. 
+The Fourier spectrum peak condition:
+%
+\begin{equation}
+ \frac{d \sigma_m}{dm_z } = 0 \iff \frac{d}{dm_z} \left(  \frac{\sin \left( \bar{H_t} \pi \right) }{ 1 - \bar{H_t}^2 m_z^2 } \right) = 0.
+\end{equation}
+%
+clearly requires a numerical solution but neglecting the numerator, we instead seek the solution of $1 - m_z^2 \bar{H}_t^2 = 0 \implies m_{max} \approx \frac{1}{\bar{H}_t}$.
+This approximation is supported in data. Denote the range of mode index  $m$ over which the $b_{m}$ have a significant value by $\Delta m$ and the maximum value $b_{m}$ by $b_{max}$, 
+then we observe:
+%
+\begin{equation}
+m_{max} \propto \frac{1}{\bar{H}_t} = \frac{H}{H_t} , \quad b_{max} \propto \bar{H}_t = \frac{H_t}{H}, \quad \Delta m \propto \frac{1}{\bar{H}_t } = \frac{H}{H_t}.
+\end{equation}
+%
+Hence, in typical summations from the simplified form of equations \ref{equ_w_response} for the $w$-response:
+% 
+\begin{equation}
+\sum_{m=1}^M  b_{m_z} \sin \left( \frac{ m_z \pi }{ H} z \right) \approx \bar{H}_t \times \frac{1}{\bar{H}_t} = constant, 
+\end{equation}
+%
+which confirms a similar scale of response, whatever the value of $H$. Again, this observation is confirmed in data recovered from 
+our model.
+
+The values of $m$ for the senior modes in the computed $w$-response (at the peak in its Fourier spectrum) increase with $H$ but can be seen to give similar contributions over 
+the near-tropopause, $0 \leq z < H_t$, by again considering a typical term from equation \ref{equ_w_response}, namely $\frac{1}{N^2} \sum_{m=1}^M b_{m} \sin \left( \frac{m \pi}{H} z\right) F(x - c t)$
+where $c_m = \frac{N H}{ m_z \pi}$. For the senior modes $m \approx m_{max} \approx \frac{H}{H_t}$, so by substituting this value, 
+we can typify the spatial variation as $\sin \left( \frac{m \pi}{H} z\right) F(x - c t) \approx \sin \left( \frac{H \pi}{H_t H} z\right) F \left( x - \frac{N H H_t}{ H \pi} t \right)$.
+Cancelling factors of $H$, we note (i) similar vertical variation within the tropopause for all $H$ and (ii) a propagation 
+speed for the aggregate response which is determined broadly by $H_t$ and independent of $H$. Note that we
+still expect different modes to propagate with different phase velocities.
+
+Whilst a broad insensitivity to the lid height is apparent from the approximate treatment above, the location of the lid $H$ must be expected to have some effect on the
+properties of the forced responses, which we shall seek to quantify. Figure ( \ref{vertical_cross_steady_lid} ) below shows the effect of increasing the
+altitude of the lid, $H \gg H_t$ on $w$ down the left column of sub-figures and $b$ 
+down the right column. This data was obtained for $\sigma = 0.1$, $N= 0.01s^{-1}$, $H_t = 1$ 
+$t=1800s$ after the onset of heating. We observe the distribution of energy increases aloft, indicating a
+radiative effect. A qualitative insight into the upward flux of energy may be obtained from this
+data, since it appears that, as $H$ increases, the vertical flow at the top of the plot windows becomes more uniform.
+%
+% 1
+%
+\FloatBarrier
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{vertical_cross_steady_lid-eps-converted-to.pdf}
+    \caption{ The transition to a radiating solution. This figure shows the 
+  effect of increasing lid altitude $H \gg H_t$ on $w$ (left) and $b$ (right) column. 
+  This data was obtained for $\sigma = 0.1$, $N= 0.01s^{-1}$, $H_t = 1$ 
+  $1800s$ after the onset of heating.  }
+  \label{vertical_cross_steady_lid}
+\end{figure}
+%
+%
+%
+We stress that the broad features of the horizontal evolution of the $w$-response are 
+qualitatively unaffected by the process of raising the lid. The vertical
+structure however varies considerably more between $H = H_t$ and  $H = 3H_t$ than it does between
+$H = 10$ and $H = 64$ which is indicative of convergence of the $w$ and $b$ solution, at least
+in the troposphere. Finally, we also note that as the height of the lid increases, the 
+heating excites a deeper mode, characterised by a larger horizontal phase speed, as expected.
+%
+%
+%
+\FloatBarrier
+%
+%
+%
+
+To quantify convergence with lid height, consider domain $0<\frac{x}{\sigma_0}<10$, $0<\frac{z}{H_t}<2$, 
+with $w_{\infty}$ corresponding to a lid height $H = 1024H_t$. We define an absolute difference field:
+%
+\begin{equation}
+\Delta w (x,z,t,H) = w(x,z,t,H,\sigma) - w_{\infty},
+\end{equation}
+%
+and consider variation with $H$ of its relative rms value:
+%
+\begin{equation}
+ \frac{ \Delta w_{rms} (x,z,t,H) } { ( w_{\infty} )_{rms} }, \quad f_{rms} \equiv \sqrt{  \frac{ \sum_{x} \sum_{z} \left(  f (x,z,t,H,\sigma)  \right)^2 } { N_x N_z} }
+\end{equation}
+% 
+where the mesh on which the response $f$ is evaluated is of size $N_x \times N_y$ points.
+By inspection, values of $\Delta w_{rms} \leq 10^7$ do not correspond to identifiable features in the $w$-response. 
+Therefore, we assume that the least significant value is $\Delta w = 10^7$. Figure \ref{fig_conv4} shows the convergence 
+for horizontal heating parameter $2^{-2}<\sigma<2^5$ increasing downwards. 
+For this range of $\sigma$ it is clear that further change in $w$-response falls below $1\%$ for $log_{10}(H) < 1.7$ i.e. for  $H < 64H_t$.
+Accordingly, for all data obtained from our projection we take an upper boundary location $H=64H_t$ to correspond to 
+solution which is radiating at the tropopause. 
+%
+%  2
+%
+\FloatBarrier
+%
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=1\textwidth] {convergence.pdf} 
+  \caption{Linked scatter plots of the convergence of the $w$-response as a function of lid height, $H$ at time $t=5000s$ after the onset of heating.
+             Different curves are parameterised by $\sigma$ with $2^{-2}<\sigma<2^5$ i.e. the heating function amplitude decays but it's width at 
+             half maximum increases. The value of $\sigma$ increases downwards between different curves in the figure.} 
+\label{fig_conv4}
+\end{figure}
+%
+%
+%
+Reflection of gravity waves from the change in buoyancy frequency, $N$, at the tropopause are physical.
+However, rigid lid reflections are not and the errors associated with them should be considered.
+in fact, the position of the lid influences allowed timescales in our computations. Modelling the heat forced response on gravity waves, 
+it is possible to determine how long gravity waves will take to propagate aloft, reflect and influence the troposphere. 
+We return to this matter in the next section. 
+%
+\FloatBarrier
+% 
+%
+%
+\section{Results}
+\label{sec_results}
+
+%
+All data presented here arises from three idealised models all having a base state of density which decays with height: i) a trapped regime with a rigid lid at the tropopause, ii) a radiating regime with a high lid to model the effect of upward radiation at the tropopause and iii) a radiating solution with a realistic difference in buoyancy frequency between the troposphere and stratosphere and a lid raised high aloft. Following our study of our models' generic convergence properties (see sec \ref{***}), we take, for cases (ii) and (iii) a converged lid at a height $H = 64 H_t$, where $H_t$ is the top of heating (or tropopause) to define a radiating regime. We shall test the sensitivity of radiating gravity waves to the temporal and spatial dependence of thermal forcing and compare the speed and magnitude of the dominant mode of response between our three models. Of interest in each case are resulting changes in the troposphere which pre-condition it to further convection (which would compound error in grid-scale models, note) and identifying aspects of our calculated responses which correspond to features not currently included in climate models.
+
+Throughout this section, we present model data for the vertical velocity, $w$, and potential temperature, $\theta$ fields, since both are influential in the organisation of deep convection. Any region with positive $w$, and low $\theta$ is likely to trigger convection, with the opposite likely to suppress triggering. All data correspond to a stationary source of sensible heating ($s = 0$) and therefore those responses presented in this section for $x > 0 $ are mirrored in $x < 0$ i.e all field variable responses are symmetric in $x = 0$.
+%
+%
+%
+\subsection{Radiating and Trapped Responses to Steady Heating for Constant $N(z)$}
+\label{sec_results_uniform}
+%
+We present here data which chartacterises the differnce between trapped and radiating solutions with constant $N(z)$.
+
+First we depict the time-evolution of our model's response to steady heating in figure 
+\ref{fig_vertical_cross_steady_timeadvance} ({ \bf Should be figure 4} ) where we present snapshots of both the $w$ and $\theta$ responses. $N= 0.01s^{-1}$, constant throughout and horizontal length scale of heating is $\sigma = 10km$.
+Note the structure of the responses above and in the region of the troposphere. The effect of this 
+structure is, of course, absent in a trapped solution.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{vertical_cross_steady_timeadvance-eps-converted-to.pdf}
+  \label{fig_vertical_cross_steady_timeadvance}
+  \caption{ The time evolution of the response for $w$ (left) and $\theta$ (right) column.
+              Note that $t$ increases down each column. This data was obtained for $\sigma =10km$, $N= 0.01s^{-1}$, $H = 64km$.  }
+\end{figure}
+
+{\bf Insert here figure A : line plot showing differnce between tropopause everage responses $<w>_z$ and $<b>_z$ in two trapped and radiating. Line plot.
+Points to raise: from trapped to radiating get (i) reduction in intensity / magnitude (as expected) and (ii) more rapid response in immediate neighbourhood of heating.
+Presence of higher-order modes which propagate accounts for more rapid dynamics. More here. }
+%
+%
+\FloatBarrier
+%Figure \ref{trapped_radiating_steady} shows the horizontal variation of the altitude-averaged potential temperature responses, calculated from our trapped (solid line) and radiating (broken line) solutions at the indicated times.  
+%
+%  \begin{figure}[h!]
+%  \centering
+%    \includegraphics[width=1\textwidth]{pulse_steady_comp-eps-converted-to.pdf}
+%  \label{pulse_steady_comp}
+%  \caption{ ...}
+%  \end{figure}
+%
+%
+%
+\subsection{Radiating Responses to Transient Heating for Constant $N(z)$}
+%
+Application of transient heating reveals interesting effects.  In figure *** show the horizontal variation of vertically-averaged $w$ and $\theta$ responses in the troposphere. For this data heating is steady for 3600s or 1hr.  
+Panels (c) and (d) show results from a simulation where heating is steady for a further hour. Panels (e) and (f) show results from a simulation where heating is switched off at 1 hour. 
+Note panels (a) and (b) show the response over the first hour (during heating), which is identical in both cases
+
+{ \bf key message Positive $w$ (region of ascent) seen to propagate away from heating region immediately after heating is stopped. }
+
+{ \bf Quantify and contrast / compare vertical velocities and suggest that any regions of ascent are candidates for convection triggering. }  
+%
+\FloatBarrier
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{pulse_steady_comp-eps-converted-to.pdf}
+  \label{pulse_steady_comp}
+  \caption{The horizontal variation of vertically-averaged $w$ and $\theta$ responses in the troposphere. Heating is steady for 3600s or 1hr.  Panels (c) and (d) show results from a simulation where heating is steady for a further hour. Panels (e) and (f) show results from a simulation where heating is switched off at 1 hour. Note panels (a) and (b) show the response over the first hour (during heating), which is identical in both cases. }
+\end{figure}
+\FloatBarrier
+%
+%
+%
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{vertical_cross_pulsed_timeadvance-eps-converted-to.pdf}
+  \label{vertical_cross_pulsed_timeadvance}
+  \caption{The $w$ and $\theta$ responses for a transient hear source which is switched-off at $t = 1800s$. This data was obtained for $\sigma = 1, N = 0.01s^{-1}, H = 64H_t.$ Advancing down the panels, we evolve at a time step of $900s$. }
+  \end{figure}
+\FloatBarrier
+%
+%
+%
+\subsection{Sensitivity of Gravity Wave Characteristics to Horizontal Length Scale of Heating}
+%
+Under conditons of conserved total (integrated) heat input, the variation of the horizontal length scale, $\sigma$, of heating function produces changes to the timing and magnitude
+of the immediate and remote atmospheric adjustment.     
+%
+\FloatBarrier
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{remote_diffs-eps-converted-to.pdf}
+  \label{remote_diffs}
+  \caption{ Time series of vertically averaged tropospheric w (blue) and PT (red) at a remote position 100km from centre of heating. (a,c) are for a 100km wide heating, (b,d) are for a 10km wide heating. Total heat input is the same. The timing and magnitude of the adjustment is sensitive to width of heating, with narrow heating producing a $w$ response of higher intensity, which passes our remote spot at a later time. Coarse numerical models with parameterised heating will miss this sensitivity.}
+\end{figure}
+\FloatBarrier
+PT response not as sensitive to width of heating. 
+
+{\bf More data e.g. (i) difference Hovmoller (between $\sigma=1$, $\sigma=5$). (ii) Plot of $w_{max}$ vs. t for $\sigma=1$, $\sigma=5$.}
+
+Conclusion : coarse GCM models with paramterized heating will miss sensitivity of response identified in this section. 
+%
+%
+%
+\subsection{The Effect of A Stratosphere}
+%
+Here present comparison of all three models considred. Quantify, comapre and contrast intensity and speed of mode of dominant response across models.
+
+Message : trapped case is radiating minimum, constant N is radiating maximum and $N(z)$ defned piecewise is intermediate case. The physics of reflection and 
+refraction of gravity waves at interface (discontinuity) in $N(Z)$ is clealry present in this trend.  
+
+\FloatBarrier
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{model_comp_early-eps-converted-to.pdf}
+  \label{model_comp_early}
+  \caption{Vertical cross of the $w$ and $\theta$ responses for a transient hear source which is switched-off at $t = 1800s$, across 3 models. (a) and (b) have a model stratosphere under a high lid, with $N_1 = 0.01s^{-1}, N_2 = 0.02s^{-1}$, (c) and (d) have $N_1 = N_2 = 0.01s^{-1}$ under a high lid, (e) and (f) have a trapped troposphere (i.e. a rigid lid placed at the tropopause). Model time is $900s$ after initiation.  }
+  \end{figure}
+    
+  \begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{model_comp_mid-eps-converted-to.pdf}
+  \label{model_comp_mid}
+  \caption{ Vertical cross of the $w$ and $\theta$ responses for a transient hear source which is switched-off at $t = 1800s$, across 3 models. (a) and (b) have a model stratosphere under a high lid, with $N_1 = 0.01s^{-1}, N_2 = 0.02s^{-1}$, (c) and (d) have $N_1 = N_2 = 0.01s^{-1}$ under a high lid, (e) and (f) have a trapped troposphere with a lid at the tropopause. Model time is $1800s$ after initiation.}
+  \end{figure}
+  
+  \begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{model_comp_late-eps-converted-to.pdf}
+  \label{model_comp_late}
+  \caption{ Vertical cross of the $w$ and $\theta$ responses for a transient hear source which is switched-off at $t = 1800s$, across 3 models. (a) and (b) have a model stratosphere under a high lid, with $N_1 = 0.01s^{-1}, N_2 = 0.02s^{-1}$, (c) and (d) have $N_1 = N_2 = 0.01s^{-1}$ under a high lid, (e) and (f) have a trapped troposphere with a lid at the tropopause. Model time is $3600s$ after initiation.}
+  \end{figure}
+  
+  \begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{model_comp_line_30-eps-converted-to.pdf}
+  \label{model_comp_late}
+  \caption{ ... }
+  \end{figure}
+  
+   \begin{figure}[h!]
+  \centering
+    \includegraphics[width=1\textwidth]{model_comp_line_60-eps-converted-to.pdf}
+  \label{model_comp_late}
+  \caption{ ... }
+  \end{figure}
+
+{\bf Contour plot of $<w>_z(t=const)$ for variable $\frac{N_2}{N_1}$. }
+
+
+\FloatBarrier
+%%
+%\subsection{Effects of Low Level Cooling}
+
+
+
+
+%
+%
+%
+\section{Discussion}
+\label{discussion}
+Using an analytic solution to a thermally-forced atmosphere in two-dimensions, we have developed a radiating model of convection capable of probing the sensitivity of 
+the response to heating of convectively-forced gravity waves, and their role in conditioning the troposphere for further convection. 
+We find that the characteristics of forced gravity waves are highly influenced by the spatial and temporal dependence of the 
+heat-forcing function, the location of the upper boundary condition of the domain and atmospheric stratification. 
+In testing the influence of the upper boundary condition, we find:
+\begin{itemize}
+ \item A rigid lid at the tropopause, allowing no wave radiation into the stratosphere, yields a single gravity mode, communicating high intensity, downward motion and warming which propagates into the neighbouring troposphere and inhibits chances of further convection.
+ \item Raising the altitude of the upper lid high into the stratosphere allows a range of higher order gravity wave modes to be excited, with much deeper and therefore faster modes acquiring importance.  The convective adjustment is therefore communicated quicker than in the trapped case. We note also that allowing waves to radiate upward sees a reduction in the magnitude and intensity of tropospheric response, as expected. 
+ \item When the lid is raised to 64 times higher than the tropopause, we note a $<1\%$ error in solution within our spatial and temporal domain, i.e. we no longer see gravity waves reflecting off the lid and re-entering our domain. This converged regime can to this level of approximation, be considered a radiating atmosphere. 
+\end{itemize}
+In interrogating the temporal dependence of gravity wave characteristics through a pulsed heating function, we find:
+\begin{itemize}
+ \item When the pulse of heating is off, a mode of upward motion propagates away from the initial heated region. Associated with this motion, the atmosphere returns to it's background state temperature. Further, one can identify a region of upward moving, cooler air, which will enhance CAPE and should thus be considered a candidate region for a subsequent convective event.  
+\end{itemize}
+Through experiments in varying the horizontal scale of heating (with total integrated heating conserved), we find:
+\begin{itemize}
+ \item the timing and magnitude of the adjustment is highly dependent on the heating regime. A wide heating of small magnitude will distribute changes in potential temperature and vertical velocity quicker and over a wider region than a narrow, intense heating. 
+ \item A narrow heating, which is perhaps closer a representation of the hot towers which characterise deep convection, has a strong response on a sub-GCM-grid scale, which will has very clear implications 
+for the forcing of neighbouring grid cells in numerical models.
+\end{itemize}
+The addition of a model stratosphere, with $N_2 = 2 N_1$:
+\begin{itemize}
+ \item Increases the intensity of the tropospheric response, due to reflection at the troposphere/stratosphere interface.
+ \item Slightly increases the propagation speed of the mode of dominant response.
+\end{itemize}
+Indeed, we find that the maximum energy radiated into the stratosphere (i.e. communicated by gravity waves), occurs when $N_1 = N_2$. With this in in mind, one can consider our trapped and radiating responses with constant $N$ respectively as lower and upper bounds on the effect of radiation at the tropopause, with the more realistic intermediate case of $N_1 = 2 x N_2$ somewhere between the two.
+
+Whilst our analytical model allows us to draw conclusions on the fundamental characteristics of convectively forced gravity waves, we note a number of deficiencies which could significantly affect results. 
+The inclusion of the Coriolis force into a fully 3-dimensional model are of the upmost importance and are of top priority in the next step of model development. 
+
+\pagebreak
+%
+%
+%
+\bibliographystyle{apalike}
+\bibliography{paper1.bib}
+%
+
+\end{document}
+
+
+
